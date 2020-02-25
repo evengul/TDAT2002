@@ -1,25 +1,30 @@
 function [] = Task251(n)
     e = ones(n, 1);
-    m = spdiags([-e 3*e -e], -1:1, n, n);
+    D = spdiags(3*ones(n, 1), 0, n, n);
+    L = spdiags(-ones(n, 1), 1, n, n);
+    U = spdiags(-ones(n, 1), -1, n, n);
+    A = L + D + U;
     
     b = ones(n, 1);
     b(1) = 2;
     b(n) = 2;
     
     s = 0;
-    e_b = 0;
     
-    d = diag(m);
-    r = m - diag(d);
     x = zeros(n, 1);
-    while abs(sum(x-(ones(n, 1)))) > 5* 10^-6
-       x = (b-r*x)./d; 
+    x_correct = ones(n, 1);
+    
+    while(1)
+       x = D\(b-(L+U)*x);
        s = s + 1;
-       e_b = abs(max(x - ones(n, 1)));
+       if max(abs(x-x_correct)) < 0.5e-6 
+           break; 
+       end
     end
-    for i = 1 : length(x)
-        fprintf('x_%i: %9f\n', i, x(i));
-    end
+    %for i = 1 : length(x)
+        %fprintf('x_%i: %9f\n', i, x(i));
+    %end
+    e_f = max(abs(A*x-b));
     fprintf('Steps: %i\n', s);
-    fprintf('Backwards error: %9f\n', e_b);
+    fprintf('Backwards error: %.25f\n', e_f);
 end

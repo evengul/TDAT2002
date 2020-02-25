@@ -4,9 +4,7 @@ function [] = Task222()
     
     Ab = [4 2 0; 4 4 2; 2 2 3];
     bb = [2; 4; 6];
-    
-    disp(size(Aa));
-    disp(size(ba));
+   
     
     [La, Ua] = LUFactorisation(Aa, ba);
     [Lb, Ub] = LUFactorisation(Ab, bb);
