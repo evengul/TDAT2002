@@ -1,11 +1,10 @@
-function y = Task3()
+function y = Task3(n)
 
     L = 2.0;            %Length of board [m]
     w = 0.30;           %Width of board [m]
     d = 0.03;           %Thickness of board [m]
     I = (w*d*d*d)/12;   %Area moment of inertia [m^4]
     E = 1.3e10;         %Young's modulus of wood [Pa]
-    n = 10;             %Amount of divisions of the board
     h = L / n;          %Length of each division [m]
     g = 9.81;           %Gravity constant [m/s^2]
     
