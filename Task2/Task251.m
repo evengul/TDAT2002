@@ -26,5 +26,5 @@ function [] = Task251(n)
     %end
     e_f = max(abs(A*x-b));
     fprintf('Steps: %i\n', s);
-    fprintf('Backwards error: %.25f\n', e_f);
+    fprintf('Forwards error: %.25f\n', e_f);
 end
