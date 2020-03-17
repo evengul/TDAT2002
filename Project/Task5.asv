@@ -12,8 +12,6 @@ function [y_errors, error_enlargement, max_error] = Task5()
     g = 9.81;           %Gravity constant [m/s^2]
     
     f = -480 * w * d * g;   %Constant f with no load on board
-    
-    error_enlargement = 0;
           
     for i = 1:11
         A = Task2(n);
@@ -21,20 +19,23 @@ function [y_errors, error_enlargement, max_error] = Task5()
         y = A\b;
         y = y * ((h * h * h * h) / E * I);
         y_errors(i) = abs(y(n) - correct_y_in_L());
-                
-        if (i > 1)
-            possible_enlargement = y_errors(i) / y_errors(i-1);
-            fprintf('Error enlargement of n=%i: %.9f\n', n, possible_enlargement);
-            if (possible_enlargement > error_enlargement)
-                error_enlargement = possible_enlargement;
-            end
-        end
-        
         n = n * 2;
     end
     
-    fprintf('Error size: \n');
-       
+    error_enlargement = 0;
+    
+    for i = 1:10
+        possible_enlargement = y_errors(i) / y_errors(i+1);
+        fprintf('C: %
+        if (y_errors(i) / y_errors(i+1) > error_enlargement)
+            error_enlargement = y_errors(i) / y_errors(i+1);
+        end
+    end
+    
+    disp(error_enlargement);  
+    
+    max_error = max(y_errors);
+    disp(max_error);
 end
 
 function y = correct_y_in_L()

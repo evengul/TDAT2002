@@ -1,0 +1,17 @@
+function C = ConditionA(n)
+    A = Task2(n);
+    
+end
+
+function s = MaxRowSum(A)
+    s = -Inf;
+    currentMaxRowIndex = 0;
+    [n, m] = size(A);
+    for rowIndex = 1:m
+       s = A(rowIndex, 1);
+       for colIndex = 2:n
+           s = s + A(rowIndex, colIndex);
+           if
+       end
+    end
+end
