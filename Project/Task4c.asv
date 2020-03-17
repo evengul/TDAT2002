@@ -1,0 +1,15 @@
+function y = Task4c()
+    for i = 0.2:0.2:2.0:
+end
+
+function y = y(x)
+    L = 2.0;            %Length of board [m]
+    w = 0.30;           %Width of board [m]
+    d = 0.03;           %Thickness of board [m]
+    I = (w*d*d*d)/12;   %Area moment of inertia [m^4]
+    E = 1.3e10;         %Young's modulus of wood [Pa]
+    
+    f = -480 * w * d * g;   %Constant f with no load on board
+    
+    y = (f / (24 * E * I)) * x * x * (x * x - 4 * L * x + 6 * L * L);
+end
