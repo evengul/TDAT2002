@@ -8,7 +8,7 @@ function [] = Task42CP3()
     [cExp, RMSEExp] = fitExp(P);
     
     fprintf('Best fitting exponential function: y=%.9fe^(%.3fx) \n', cExp(1), cExp(2));
-    fprintf('RMSE of function: %.3f\n', RMSEExp);
+    %fprintf('RMSE of function: %.3f\n', RMSEExp);
     line1980 = cExp(1)*exp(cExp(2)*1980);
     fprintf('y_exp(1980)=%.3f | Error: %.3f | Relative forward error:%.3f\n\n', line1980, abs(line1980 - actual1980), abs(line1980 - actual1980) / actual1980); 
 end
@@ -18,8 +18,6 @@ function [cExp, RMSEExp] = fitExp(P)
     b = [log(P(1, 2)); log(P(2,2)); log(P(3,2)); log(P(4,2))];
     [cExp, RMSEExp] = fit(A, b);
     cExp(1) = exp(cExp(1));
-    disp(cExp);
-    disp(RMSEExp);
 end
 
 function [c, RMSE_value] = fit(A, b)
