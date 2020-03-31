@@ -1,8 +1,6 @@
 function y = Task3(n)
-        
-    z = @(x) (0);       % What we add to f to get f(x)
-        
-    b = GetF_X(z, zeros(n, 1));     %A vector of n f's
-    A = Task2(n);           %A matrix for solving Ay=f
-    y = A\b;                %Solving for y
+    z = @(x) (0);                   % We solve the problem without any additional load to the board
+    b = GetF_X(z, zeros(n, 1));     % We get the f(x) function that defines the bend in the board
+    A = Task2(n);                   % We get the matrix of size n
+    y = A\b;                        % We solve for y, and get a vector with the displacement in all x positions on the board
 end
