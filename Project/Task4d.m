@@ -1,6 +1,6 @@
 function Task4d()
     % Numeric fourth derivative from task 4c
-    y_4 = -0.004829538461536;
+    [y, y_4] = Task4c();
     % Exact fourth derivative
     y4 = getY_4();
     
